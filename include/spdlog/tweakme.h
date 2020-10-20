@@ -26,7 +26,8 @@
 // WARNING: If the log pattern contains thread id (i.e, %t) while this flag is
 // on, zero will be logged as thread id.
 //
-// #define SPDLOG_NO_THREAD_ID
+// currently OpenMP is used for multi-threading and the thread IDs are unknown anyways
+#define SPDLOG_NO_THREAD_ID
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -112,5 +113,7 @@
 // __PRETTY_FUNCTION__ might be nicer in clang/gcc, and __FUNCTION__ in msvc.
 // Defaults to __FUNCTION__ (should work on all compilers) if not defined.
 //
-// #define SPDLOG_FUNCTION __PRETTY_FUNCTION__
+// should be defined in MSVC nowadays,
+// note, printing function name, file name or line number requires SPDLOG_INFO(...) macro instead of spdlog::info(...) etc.
+#define SPDLOG_FUNCTION __PRETTY_FUNCTION__
 ///////////////////////////////////////////////////////////////////////////////
